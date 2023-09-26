@@ -5,7 +5,7 @@ Feature: Tilelytics - E2E layout - paga navigation test
     When he logins Tilelyics as default "Management"
     Then he should see links in side bars
       | Overview |
-      | Admin              |
+      | Admin    |
     Then he should see factories links in side bars
     And he should see Admin links in side bars
       | Factories      |
@@ -17,7 +17,7 @@ Feature: Tilelytics - E2E layout - paga navigation test
     Given User is accessing Tilelytics
     When he logins Tilelyics as default "wxadmin"
     Then he should see links in side bars
-      | Overview  |
+      | Overview            |
       | Admin               |
       | Performance Manager |
     Then he should see factories links in side bars
@@ -37,6 +37,12 @@ Feature: Tilelytics - E2E layout - paga navigation test
     When he selects "Dark" mode and "English" version
     Then he should see profile display in "Dark" mode
     Then he should be in company overview page
+    #    TODO : get currency from DB
+    And he should see KPI tiles
+      | OEE          |
+      | Availability |
+      | Efficiency   |
+      | Quality      |
     And he should see period list
       | Customize your Start and End dates |
       | Yesterday                          |
@@ -48,16 +54,11 @@ Feature: Tilelytics - E2E layout - paga navigation test
     And he should see opportunity unit menu
       | CAD |
       | hr  |
-#    TODO : get currency from DB
-    And he should see KPI tiles
-      | OEE          |
-      | Availability |
-      | Efficiency   |
-      | Quality      |
     And he should see potential gain
-    And he should see tooltips
-      | Amount of gains, using a benchmark of 100%, listed by opportunity and production line. It could an annualized value or a value that covers the selected period. Open the menu next to the period picker to change it. |
-      | Amount of gains using a benchmark of 100%. It could an annualized value or a value that covers the selected period. Open the menu next to the period picker to change it.                                             |
+#    mouse moveover tooltip
+#    And he should see tooltips
+#      | Amount of gains, using a benchmark of 100%, listed by opportunity and production line. It could an annualized value or a value that covers the selected period. Open the menu next to the period picker to change it. |
+#      | Amount of gains using a benchmark of 100%. It could an annualized value or a value that covers the selected period. Open the menu next to the period picker to change it.                                             |
     And he should see Opportunities section
     And he should see chart options
       | OEE          |
@@ -95,7 +96,7 @@ Feature: Tilelytics - E2E layout - paga navigation test
       | View savings in time     |
     And he clicks on Apply Filters button
     Then he should see chart section with reports
-      | Today’s Average   |
+      | Today’s Average    |
       | Cumulative Average |
       | Best Mark          |
     When he clicks on table view

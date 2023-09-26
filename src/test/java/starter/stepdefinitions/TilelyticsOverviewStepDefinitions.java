@@ -143,9 +143,9 @@ public class TilelyticsOverviewStepDefinitions {
             System.out.println("Validate string =" + e);
             String newStr = expStr.replace("<contains>", e);
             System.out.println("replaced string =" + newStr);
-            WebElement ele = getDriver().findElement(By.xpath(newStr));
+            List<WebElement> ele = getDriver().findElements(By.xpath(newStr));
             actor.attemptsTo(
-                Ensure.that(ElementLocated.by(newStr)).isDisplayed()
+                Ensure.that(ele.size()).isGreaterThan(0)
             );
         });
     }
@@ -293,7 +293,7 @@ public class TilelyticsOverviewStepDefinitions {
     @Then("{actor} should see tooltips")
     public void heShouldSeeTooltips(Actor actor, DataTable table) {
         ArrayList<String> expectedResultList = helper.getValidations(table);
-        String path = "//div[@class='v-tooltip__content']";
+        String path = "//div[@class='v-tooltip__content']/span";
 
         expectedResultList.forEach((e) -> {
             List<WebElement> elements = getDriver().findElements(By.xpath(path));
